@@ -1,10 +1,24 @@
-let React = require('react');
-
-class BibleVerse extends React.Component {
+class Verse extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {verse : props.verse};
+        this.state = {
+            verse: []
+        };
     }
+
+    componentDidMount() {
+        axios
+            .get('http://labs.bible.org/api/?type=json&passage=random')
+            .then(res => {
+                const verse = res.data;
+                this.setState({ verse });
+            })
+            .catch(function (error) {
+                    console.log(error);
+                });
+
+    }
+
     render() {
         let items = this.state.verse.map(function (item) {
             if (item.titles && item.title){
@@ -31,8 +45,10 @@ class BibleVerse extends React.Component {
                 );
             }
         });
-    return( React.createElement("div", null, items));
+        return( React.createElement("div", null, items));
     }
 }
 
-module.exports.bibleVerse = BibleVerse;
+if(typeof window !== 'undefined') {
+    ReactDOM.render(React.createElement(Verse ), document.getElementById("content"));
+}
