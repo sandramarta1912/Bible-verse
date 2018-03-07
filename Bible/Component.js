@@ -8,14 +8,14 @@ class Verse extends React.Component {
 
     componentDidMount() {
         axios
-            .get('http://labs.bible.org/api/?type=json&passage=random')
+            .get('http://localhost:3000/data')
             .then(res => {
                 const verse = res.data;
                 this.setState({ verse });
             })
             .catch(function (error) {
                     console.log(error);
-                });
+            });
 
     }
 
