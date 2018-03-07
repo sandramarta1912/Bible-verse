@@ -8,11 +8,11 @@ app.use('/Component.js', express.static(path.join('Component.js')));
 app.get('/data', function (req, res) {
     axios
         .get('http://labs.bible.org/api/?type=json&passage=random')
-        .then(function(res) {}
+        .then(function(res) {})
         .catch(function (error) {
             console.log(error);
-        });
-});
+        })
+})
 app.get('/verse', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
