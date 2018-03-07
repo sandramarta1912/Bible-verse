@@ -10,7 +10,7 @@ app.get('/data', function (req, res) {
         .get('http://labs.bible.org/api/?type=json&passage=random')
         .then(function(res) {
             console.log(res.data);
-            return res.send(data)
+            return res.send(data) // TODO data? Cine e ăla? Tu nu verifici ce fac eu?
         })
         .catch(function (error) {
             console.log(error);
