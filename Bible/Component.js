@@ -7,14 +7,16 @@ class Verse extends React.Component {
     }
 
     componentDidMount() {
+        console.log("test        ")
         axios
             .get('http://localhost:3000/data')
             .then(res => {
+                console.log("response " + res)
                 const verse = res.data;
-                this.setState({ verse });
+                this.setState({ verse: verse });
             })
             .catch(function (error) {
-                    console.log(error);
+                    console.log("error " +  error);
             });
 
     }
