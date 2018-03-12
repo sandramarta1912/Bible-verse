@@ -6,7 +6,7 @@ class Base extends React.Component {
             React.createElement (
                 'div',
                 null,
-                React.createElement(Button, null)
+                React.createElement(Button, null) // TODO aici pasezi funcția de mai sus către copil, ca al doilea argument, în loc de null
             )
         )
     }
