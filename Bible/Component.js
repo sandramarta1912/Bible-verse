@@ -24,7 +24,7 @@ class Button extends React.Component {
                 React.createElement(
                     'button',
                     { onClick: this.props.button},
-                    'Verse'
+                    'Verse' // De ce e Verse copil al lui Button aici? Nu am convenit că va fi copil al lui Base?
                 )
             )
         );
