@@ -5,18 +5,18 @@ let axios = require('axios');
 
 app.set('port', 3000);
 app.use('/Component.js', express.static(path.join('Component.js')));
-app.get('/data', function (req, res) {
+app.get('/data', function (request, response) {
     axios
         .get('http://labs.bible.org/api/?type=json&passage=random')
-        .then(function(res) {
+        .then(function (res) {
             console.log(res.data);
-            return res.send(data) // TODO data? Cine e ăla? Tu nu verifici ce fac eu?
+            response.send(res.data)
         })
         .catch(function (error) {
             console.log(error);
-            return res.send([])
+            return response.send([])
         })
-})
+});
 app.get('/verse', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });

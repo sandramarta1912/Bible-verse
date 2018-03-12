@@ -1,3 +1,30 @@
+class Base extends React.Component {
+    onButtonPressed() {
+
+    }
+    render() {
+        return
+
+    }
+
+
+}
+var buttonStyle = {
+    margin: '10px 10px 10px 0'
+};
+class Button extends React.Component {
+    handleClick() {
+       this.props.onClick()
+    }
+    render() {
+        return (
+            React.createElement(
+            'button', {
+                style: buttonStyle, onClick: this.handleClick }, React.createElement(Verse, null)
+        ));
+    }
+
+}
 class Verse extends React.Component {
     constructor(props) {
         super(props);
@@ -7,18 +34,18 @@ class Verse extends React.Component {
     }
 
     componentDidMount() {
-        console.log("test        ")
         axios
             .get('http://localhost:3000/data')
-            .then(res => {
-                console.log("response " + res)
-                const verse = res.data;
-                this.setState({ verse: verse });
+            .then((res) => {
+                console.log("response " + res);
+                const verses = res.data;
+                console.log(verses);
+                this.setState({ verse: verses });
+
             })
             .catch(function (error) {
                     console.log("error " +  error);
             });
-
     }
 
     render() {
@@ -30,6 +57,7 @@ class Verse extends React.Component {
                             " " + item.bookname ,
                             " " + item.chapter,
                             " " + item.text,
+                            " " + item.verse,
                             " " + item.title,
                             " " + item.titles
                         )
@@ -41,6 +69,7 @@ class Verse extends React.Component {
                         React.createElement("p", null,
                             " " + item.bookname ,
                             " " + item.chapter,
+                            " " + item.verse,
                             " " + item.text,
                         )
                     )
@@ -52,5 +81,6 @@ class Verse extends React.Component {
 }
 
 if(typeof window !== 'undefined') {
-    ReactDOM.render(React.createElement(Verse ), document.getElementById("content"));
+
+    ReactDOM.render(React.createElement( Button ), document.getElementById("content"));
 }
