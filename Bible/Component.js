@@ -18,7 +18,7 @@ class Base extends React.Component {
 class Button extends React.Component {
     render() {
         return (
-            React.createElement(
+            React.createElement( // Ce-i cu asta? De ce ai nevoie de un div? De ce nu merge doar direct button?
                 'div',
                 null,
                 React.createElement(
