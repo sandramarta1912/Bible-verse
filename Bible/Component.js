@@ -6,6 +6,7 @@ class Base extends React.Component {
             React.createElement (
                 'div',
                 null,
+                // React.createElement(Verse ...... ) Nu ar trebui să fie și Verse copil al lui Base, nu așa am vorbit?
                 React.createElement(Button, null) // TODO aici pasezi funcția de mai sus către copil, ca al doilea argument, în loc de null
             )
         )
