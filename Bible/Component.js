@@ -1,30 +1,29 @@
-class Base extends React.Component {
-    onButtonPressed() {
-
-    }
-    render() {
-        return
-
-    }
-
-
-}
-var buttonStyle = {
-    margin: '10px 10px 10px 0'
-};
 class Button extends React.Component {
-    handleClick() {
-       this.props.onClick()
+    constructor() {
+        super();
+        this.state = {
+            showReply: false
+        }
+    }
+    onClick(){
+        this.setState({ showReply: !this.state.showReply })
     }
     render() {
         return (
             React.createElement(
-            'button', {
-                style: buttonStyle, onClick: this.handleClick }, React.createElement(Verse, null)
-        ));
+                'div',
+                null,
+                React.createElement(
+                    'button',
+                    { onClick: this.onClick.bind(this) },
+                    'Verse'
+                ),
+                this.state.showReply && React.createElement(Verse, null)
+            )
+        );
     }
-
 }
+
 class Verse extends React.Component {
     constructor(props) {
         super(props);
