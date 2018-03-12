@@ -1,4 +1,6 @@
 class Base extends React.Component {
+    // TODO fă o funcție aici care va face render la Verse. Pasează funcția aia în Button.
+    
     render() {
         return (
             React.createElement (
@@ -9,6 +11,7 @@ class Base extends React.Component {
         )
     }
 }
+
 class Button extends React.Component {
     constructor() {
         super();
@@ -17,19 +20,12 @@ class Button extends React.Component {
         }
     }
     onClick(){
-        this.setState({ showReply: !this.state.showReply })
+        // TODO apelează funcția venită din părinte aici.
     }
     render() {
         return (
-            React.createElement(
-                'div',
-                null,
-                React.createElement(
-                    'button',
-                    { onClick: this.onClick.bind(this) },
-                    'Verse'
-                ),
-                this.state.showReply && React.createElement(Verse, null)
+                'button',
+                { onClick: this.onClick() 
             )
         );
     }
