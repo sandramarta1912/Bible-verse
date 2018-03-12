@@ -2,6 +2,7 @@ class Base extends React.Component {
     onButtonPressed() {
     alert("Hello")
     }
+
     render() {
         return (
             React.createElement (
