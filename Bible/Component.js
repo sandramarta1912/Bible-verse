@@ -1,6 +1,6 @@
 class Base extends React.Component {
     onButtonPressed() {
-    alert("Hello")
+        this.child.Verse();
     }
 
     render() {
@@ -19,13 +19,9 @@ class Button extends React.Component {
     render() {
         return (
             React.createElement(
-                'div',
-                null,
-                React.createElement(
-                    'button',
-                    { onClick: this.props.button},
-                    'Verse'
-                )
+                'button',
+                { onClick: this.props.button},
+                'Another Verse'
             )
         );
     }
