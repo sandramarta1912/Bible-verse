@@ -1,3 +1,14 @@
+class Base extends React.Component {
+    render() {
+        return (
+            React.createElement (
+                'div',
+                null,
+                React.createElement(Button, null)
+            )
+        )
+    }
+}
 class Button extends React.Component {
     constructor() {
         super();
@@ -81,5 +92,5 @@ class Verse extends React.Component {
 
 if(typeof window !== 'undefined') {
 
-    ReactDOM.render(React.createElement( Button ), document.getElementById("content"));
+    ReactDOM.render(React.createElement( Base ), document.getElementById("content"));
 }
