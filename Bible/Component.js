@@ -1,24 +1,20 @@
 class Base extends React.Component {
+    onButtonPressed() {
+    alert("Hello")
+    }
     render() {
         return (
             React.createElement (
                 'div',
                 null,
-                React.createElement(Button, null)
+                React.createElement(Verse),
+                React.createElement(Button, { button: this.onButtonPressed })
             )
         )
     }
 }
+
 class Button extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            showReply: false
-        }
-    }
-    onClick(){
-        this.setState({ showReply: !this.state.showReply })
-    }
     render() {
         return (
             React.createElement(
@@ -26,14 +22,17 @@ class Button extends React.Component {
                 null,
                 React.createElement(
                     'button',
-                    { onClick: this.onClick.bind(this) },
+                    { onClick: this.props.button},
                     'Verse'
-                ),
-                this.state.showReply && React.createElement(Verse, null)
+                )
             )
         );
     }
 }
+Button.propTypes = {
+    button: React.PropTypes.func
+
+};
 
 class Verse extends React.Component {
     constructor(props) {
