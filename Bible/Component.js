@@ -45,38 +45,34 @@ class Verse extends React.Component {
                 const verses = res.data;
                 console.log(verses);
             
-                let items = //TODO .map
-                                    (function (item)
-                         {
-                            if (item.titles && item.title){
-                                return (
-                                    React.createElement("div", null,
-                                        React.createElement("p", null,
-                                            " " + item.bookname ,
-                                            " " + item.chapter,
-                                            " " + item.text,
-                                            " " + item.verse,
-                                            " " + item.title,
-                                            " " + item.titles
-                                        )
-                                    )
+                let items = res.data.map(function (item) {
+                    if (item.titles && item.title) {
+                        return (
+                            React.createElement("div", null,
+                                React.createElement("p", null,
+                                    " " + item.bookname ,
+                                    " " + item.chapter,
+                                    " " + item.text,
+                                    " " + item.verse,
+                                    " " + item.title,
+                                    " " + item.titles
                                 )
-                            } else {
-                                return (
-                                    React.createElement("div", null,
-                                        React.createElement("p", null,
-                                            " " + item.bookname ,
-                                            " " + item.chapter,
-                                            " " + item.verse,
-                                            " " + item.text,
-                                        )
-                                    )
-                                );
-                            }
-                        });
-                        return( React.createElement("div", null, items));            
-            
-
+                            )
+                        )
+                    } else {
+                        return (
+                            React.createElement("div", null,
+                                React.createElement("p", null,
+                                    " " + item.bookname ,
+                                    " " + item.chapter,
+                                    " " + item.verse,
+                                    " " + item.text,
+                                )
+                            )
+                        );
+                    }
+                });
+                return( React.createElement("div", null, items));
             })
             .catch(function (error) {
                 console.log("error " +  error);
