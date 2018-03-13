@@ -1,6 +1,11 @@
 class Base extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onButtonPressed = this.onButtonPressed.bind(this);
+    }
     onButtonPressed() {
-        this.child.Verse();
+        this.setState.data = this.props.data
+
     }
 
     render() {
@@ -8,8 +13,8 @@ class Base extends React.Component {
             React.createElement (
                 'div',
                 null,
-                React.createElement(Verse),
-                React.createElement(Button, { button: this.onButtonPressed })
+                React.createElement(Button, { button: this.onButtonPressed }),
+                React.createElement(Verse, this.props.data),
             )
         )
     }
@@ -32,30 +37,22 @@ Button.propTypes = {
 };
 
 class Verse extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            verse: []
-        };
-    }
-
-    componentDidMount() {
+    render() {
         axios
             .get('http://localhost:3000/data')
             .then((res) => {
                 console.log("response " + res);
                 const verses = res.data;
                 console.log(verses);
-                this.setState({ verse: verses });
 
             })
             .catch(function (error) {
-                    console.log("error " +  error);
+                console.log("error " +  error);
             });
-    }
 
-    render() {
-        let items = this.state.verse.map(function (item) {
+        let items = //TODO .map
+                    (function (item)
+         {
             if (item.titles && item.title){
                 return (
                     React.createElement("div", null,
