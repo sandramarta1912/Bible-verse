@@ -26,6 +26,7 @@ class Button extends React.Component {
         );
     }
 }
+
 Button.propTypes = {
     button: React.PropTypes.func
 
@@ -48,18 +49,21 @@ class Verse extends React.Component {
                 const verses = res.data;
                 console.log(verses);
                 this.setState({ verse: verses });
-
             })
             .catch(function (error) {
                 console.log("error " +  error);
+                return( React.createElement("div", null, []));  
             });
     }
+
     componentWillReceiveProps(nextProps) {
+
 
         if (nextProps === this.props) {
             return;
         }
     }
+
     render() {
         let items = this.state.verse.map(function (item) {
             if (item.titles && item.title){
