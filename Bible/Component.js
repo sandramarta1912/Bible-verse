@@ -1,6 +1,14 @@
 class Base extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: new Date()
+        };
+        this.onButtonPressed = this.onButtonPressed.bind(this)
+    }
+
     onButtonPressed() {
-        this.child.Verse();
+        this.setState({date: new Date()})
     }
 
     render() {
@@ -8,7 +16,7 @@ class Base extends React.Component {
             React.createElement (
                 'div',
                 null,
-                React.createElement(Verse),
+                React.createElement(Verse, {date: this.state.date}),
                 React.createElement(Button, { button: this.onButtonPressed })
             )
         )
@@ -36,8 +44,8 @@ class Verse extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            verse: [],
-            mounted: true
+            date: props.date,
+            verse: []
         };
     }
 
@@ -56,16 +64,13 @@ class Verse extends React.Component {
             });
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log("received")
-
-
-        if (nextProps === this.props) {
-            return;
-        }
+    componentWillReceiveProps(newProps) {
+        console.log('received new props: ' + JSON.stringify(newProps))
+        this.setState({date: newProps.date});
     }
 
     render() {
+        console.log('starting the render of Verse component')
         let items = this.state.verse.map(function (item, index) {
             if (item.titles && item.title){
                 return (
