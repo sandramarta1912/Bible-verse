@@ -57,6 +57,7 @@ class Verse extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log("received")
 
 
         if (nextProps === this.props) {
@@ -65,10 +66,12 @@ class Verse extends React.Component {
     }
 
     render() {
-        let items = this.state.verse.map(function (item) {
+        let items = this.state.verse.map(function (item, index) {
             if (item.titles && item.title){
                 return (
-                    React.createElement("div", null,
+                    React.createElement(
+                        "div",
+                        {key: index},
                         React.createElement("p", null,
                             " " + item.bookname ,
                             " " + item.chapter,
@@ -81,7 +84,9 @@ class Verse extends React.Component {
                 )
             } else {
                 return (
-                    React.createElement("div", null,
+                    React.createElement(
+                        "div",
+                        {key: index},
                         React.createElement("p", null,
                             " " + item.bookname ,
                             " " + item.chapter,
