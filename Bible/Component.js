@@ -1,5 +1,6 @@
 class Base extends React.Component {
-    constructor() {
+    constructor(props) {
+        super(props);
         this.onButtonPressed = this.onButtonPressed.bind(this)
     }
 

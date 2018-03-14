@@ -7,7 +7,7 @@ app.set('port', 3000);
 app.use('/Component.js', express.static(path.join('Component.js')));
 app.get('/data', function (request, response) {
     axios
-        .get('http://labs.bible.org/api/?type=json&passage=random')
+        .get('http://labs.bible.org/api/?type=json&passage=random&formatting=plain')
         .then(function (res) {
             console.log(res.data);
             response.send(res.data)
