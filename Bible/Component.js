@@ -8,6 +8,7 @@ class Base extends React.Component {
     }
 
     onButtonPressed() {
+        console.log("button pressed")
         this.setState({date: new Date()})
     }
 
@@ -50,6 +51,7 @@ class Verse extends React.Component {
     }
 
     componentDidMount() {
+        console.log('making an asynchronous call to the backend')
         axios
             .get('http://localhost:3000/data')
             .then((res) => {
@@ -67,10 +69,11 @@ class Verse extends React.Component {
     componentWillReceiveProps(newProps) {
         console.log('received new props: ' + JSON.stringify(newProps))
         this.setState({date: newProps.date});
+        console.log("updated Verse's internal state with the new pros")
     }
 
     render() {
-        console.log('starting the render of Verse component')
+        console.log('starting the rendering of Verse component')
         let items = this.state.verse.map(function (item, index) {
             if (item.titles && item.title){
                 return (
