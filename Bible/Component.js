@@ -46,7 +46,7 @@ class Verse extends React.Component {
         };
     }
 
-    handleAxios() {
+    retrieveVerse() {
         axios
             .get('http://localhost:3000/data')
             .then((res) => {
@@ -64,11 +64,11 @@ class Verse extends React.Component {
 
     componentDidMount() {
         console.log('making an asynchronous call to the backend');
-        this.handleAxios();
+        this.retrieveVerse();
     }
 
     componentWillReceiveProps(newProps) {
-        this.handleAxios();
+        this.retrieveVerse();
         console.log('received new props: ' + JSON.stringify(newProps));
         console.log("updated Verse's internal state with the new pros")
     }
