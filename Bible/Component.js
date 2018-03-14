@@ -1,9 +1,6 @@
 class Base extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            date: new Date()
-        };
         this.onButtonPressed = this.onButtonPressed.bind(this)
     }
 
@@ -18,7 +15,7 @@ class Base extends React.Component {
             React.createElement (
                 'div',
                 null,
-                React.createElement(Verse, {date: this.state.date}),
+                React.createElement(Verse),
                 React.createElement(Button, { button: this.onButtonPressed })
             )
         )
@@ -46,16 +43,10 @@ class Verse extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: props.date,
             verse: []
         };
     }
-    // shouldComponentUpdate(newProps, newState) {
-    //     console.log('test')
-    //     if (this.state.verse !== newState) {
-    //         return true;
-    //     }
-    // }
+
     handleAxios() {
         axios
             .get('http://localhost:3000/data')
@@ -80,7 +71,6 @@ class Verse extends React.Component {
     componentWillReceiveProps(newProps) {
         this.handleAxios();
         console.log('received new props: ' + JSON.stringify(newProps));
-        this.setState({date: newProps.date});
         console.log("updated Verse's internal state with the new pros")
     }
 
