@@ -1,9 +1,6 @@
 class Base extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: new Date()
-        };
         this.addItem = this.addItem.bind(this);
         this.onButtonPressed = this.onButtonPressed.bind(this)
     }
@@ -11,9 +8,11 @@ class Base extends React.Component {
     onButtonPressed() {
         console.log("button pressed");
         this.forceUpdate();
+
     }
     addItem() {
-        this.setState({date: new Date()});
+        console.log("add list");
+
     }
 
     render() {
@@ -22,7 +21,7 @@ class Base extends React.Component {
             React.createElement (
                 'div',
                 { className:'jumbotron'},
-                React.createElement(Verse, {add: this.addItem}),
+                React.createElement(Verse, { add: this.addItem} ),
                 React.createElement(VerseList),
                 React.createElement(Button, { button: this.onButtonPressed })
             )
@@ -56,6 +55,7 @@ class Verse extends React.Component {
     }
 
     retrieveVerse() {
+        console.log('test')
         axios
             .get('http://localhost:3000/data')
             .then((res) => {
@@ -77,11 +77,10 @@ class Verse extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
+        console.log('test1');
         this.retrieveVerse();
         console.log('received new props: ' + JSON.stringify(newProps));
-        console.log("updated Verse's internal state with the new pros")
     }
-
 
     render() {
         console.log('this is render verse');
@@ -116,20 +115,20 @@ class Verse extends React.Component {
                 );
             }
         });
-        return( React.createElement("div", {className: 'text-center', add:this.props.add}, items));
+        return( React.createElement("div", {className: 'text-center', componentWillReceiveProps: this.addItem }, items));
     }
 }
 Verse.propTypes = {
    add: React.PropTypes.func
 };
 class VerseList extends React.Component {
-
     render() {
+        console.log("test4")
         return (
             React.createElement(
                 'li',
                 null,
-                'Another Verse'
+                this.state
             )
         );
     }
