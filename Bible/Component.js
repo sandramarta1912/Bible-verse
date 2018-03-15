@@ -1,12 +1,19 @@
 class Base extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            data: new Date()
+        };
+        this.addItem = this.addItem.bind(this);
         this.onButtonPressed = this.onButtonPressed.bind(this)
     }
 
     onButtonPressed() {
         console.log("button pressed");
         this.forceUpdate();
+    }
+    addItem() {
+        this.setState({date: new Date()});
     }
 
     render() {
@@ -15,7 +22,7 @@ class Base extends React.Component {
             React.createElement (
                 'div',
                 { className:'jumbotron'},
-                React.createElement(Verse),
+                React.createElement(Verse, {add: this.addItem}),
                 React.createElement(VerseList),
                 React.createElement(Button, { button: this.onButtonPressed })
             )
@@ -109,10 +116,14 @@ class Verse extends React.Component {
                 );
             }
         });
-        return( React.createElement("div", {className: 'text-center'}, items));
+        return( React.createElement("div", {className: 'text-center', add:this.props.add}, items));
     }
 }
+Verse.propTypes = {
+   add: React.PropTypes.func
+};
 class VerseList extends React.Component {
+
     render() {
         return (
             React.createElement(
