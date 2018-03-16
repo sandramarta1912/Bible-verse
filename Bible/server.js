@@ -5,7 +5,6 @@ let axios = require('axios');
 
 app.set('port', 3000);
 app.use(express.static('components'))
-// app.use('/Component.js', express.static(path.join('Component.js')));
 app.get('/data', function (request, response) {
     axios
         .get('http://labs.bible.org/api/?type=json&passage=random&formatting=plain')
@@ -25,3 +24,21 @@ app.get('/verse', function (req, res) {
 app.listen(app.set("port"), function(){
     console.log('Express server started at port ' + app.set("port"));
 });
+
+
+
+
+
+
+app.get('/', function(req, res){
+    axios
+        .get('http://labs.bible.org/api/?type=json&passage=random&formatting=plain')
+        .then(function (response) {
+            var resultElemnt = document.......
+            resultElemnt.innerHtml = generateSucces.........
+
+        })
+        .catch(function(error) {
+
+        })
+}) ;

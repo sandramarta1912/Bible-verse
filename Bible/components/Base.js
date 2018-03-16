@@ -10,8 +10,10 @@ class Base extends React.Component {
         this.forceUpdate();
 
     }
-    addItem(verse) {
+    addItem() {
         console.log("add list");
+        this.VerseList(this.state.verse)
+
     }
 
     render() {
@@ -27,3 +29,4 @@ class Base extends React.Component {
         )
     }
 }
+

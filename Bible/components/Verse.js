@@ -7,7 +7,7 @@ class Verse extends React.Component {
     }
 
     retrieveVerse() {
-        console.log('test')
+        console.log('test');
         axios
             .get('http://localhost:3000/data')
             .then((res) => {
@@ -32,6 +32,11 @@ class Verse extends React.Component {
         console.log('test1');
         this.retrieveVerse();
         console.log('received new props: ' + JSON.stringify(newProps));
+    }
+    shouldComponentUpdate(){
+        console.log('should');
+        this.props.add();
+        return true;
     }
 
     render() {
@@ -67,7 +72,7 @@ class Verse extends React.Component {
                 );
             }
         });
-        return( React.createElement("div", {className: 'text-center', componentWillReceiveProps: this.addItem }, items));
+        return( React.createElement("div", {className: 'text-center'}, items));
     }
 }
 
