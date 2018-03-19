@@ -1,17 +1,17 @@
 class VerseList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            verse: []
-        };
-    }
     render() {
-        console.log("test4");
+       let displayVerse = function(verse) {
+           React.createElement(
+               "li",
+               null,
+               verse
+           );
+       };
         return (
             React.createElement(
-                'li',
+                'ul',
                 null,
-                this.state.verse
+                this.props.verse.map(displayVerse)
             )
         );
     }

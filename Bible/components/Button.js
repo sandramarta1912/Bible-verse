@@ -1,5 +1,6 @@
 class Button extends React.Component {
     render() {
+        console.log('button ');
         return (
             React.createElement(
                 'button',

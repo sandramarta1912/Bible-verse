@@ -1,6 +1,10 @@
 class Base extends React.Component {
     constructor(props) {
         super(props);
+        this.state ={
+            verse: [],
+            newVerse : ''
+        };
         this.addItem = this.addItem.bind(this);
         this.onButtonPressed = this.onButtonPressed.bind(this)
     }
@@ -8,11 +12,11 @@ class Base extends React.Component {
     onButtonPressed() {
         console.log("button pressed");
         this.forceUpdate();
+        console.log("Hey")
 
     }
     addItem() {
         console.log("add list");
-        this.VerseList(this.state.verse)
 
     }
 
@@ -23,7 +27,7 @@ class Base extends React.Component {
                 'div',
                 { className:'jumbotron'},
                 React.createElement(Verse, { add: this.addItem} ),
-                React.createElement(VerseList),
+                React.createElement(VerseList, {verse: this.state.verse} ),
                 React.createElement(Button, { button: this.onButtonPressed })
             )
         )
