@@ -11,11 +11,12 @@ class Verse extends React.Component {
         axios
             .get('http://localhost:3000/data')
             .then((res) => {
+                console.log("response " + res);
+                const verses = res.data;            
             
                 // TODO send current verse to the Base to be pushed into VerseList
-            
-                console.log("response " + res);
-                const verses = res.data;
+                // Something like: add(verses)
+
                 console.log(verses);
                 this.setState({ verse: verses });
             })
