@@ -1,9 +1,9 @@
 class Base extends React.Component {
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             verse: [],
-           task : ''
+            task : ''
         };
         this.addItem = this.addItem.bind(this);
         this.onButtonPressed = this.onButtonPressed.bind(this)
@@ -12,13 +12,14 @@ class Base extends React.Component {
 
     onButtonPressed() {
         console.log("button pressed");
-        this.setState({ verse: "marta" });
+        this.forceUpdate();
+        //this.setState({ verse: 'marta' });
 
     }
 
-    addItem(verse) {
-        console.log("add a verse: " + verse);
-        
+    addItem(verses) {
+        console.log("add a verse: " + verses);
+        this.setState({ verse: this.state.verse.concat(verses)});
         // TODO pass that verse to the VerseList component thorough it's props
 
     }

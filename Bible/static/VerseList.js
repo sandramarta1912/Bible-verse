@@ -1,5 +1,11 @@
 class VerseList extends React.Component {
     // TODO Add state to this component (in order to keep verses)
+    constructor(props) {
+        super(props);
+        this.state = {
+            verse: [],
+        };
+    }
     
     // TODO Add handler to receive new props (a new verse) and then push it into the state
     
@@ -15,7 +21,7 @@ class VerseList extends React.Component {
             React.createElement(
                 'li',
                 null,
-                this.props.verse
+                this.props.verses
             )
         );
     }

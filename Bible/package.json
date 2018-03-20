@@ -5,15 +5,22 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "browserify": "^16.1.1",
     "create-react-class": "^15.6.3",
     "express": "^4.16.2",
     "path": "^0.12.7",
     "react": "^16.3.0-alpha.1",
-    "react-dom": "^16.3.0-alpha.1"
+    "react-dom": "^16.3.0-alpha.1",
+    "striptags": "^3.1.1"
   },
   "scripts": {
     "start": "node server.js"
+    //"start": "rm -f static/transpiled.js; babel --plugins transform-react-jsx static/*.js --out-file static/transpiled.js; browserify static/transpiled.js > static/bundle.js; node server.js"
   },
   "author": "Marta",
-  "description": "Random verse from bible"
+  "description": "Random verse from bible",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1"
+  }
 }

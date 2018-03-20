@@ -4,7 +4,7 @@ let path = require('path');
 let axios = require('axios');
 
 app.set('port', 3000);
-app.use(express.static('components'))
+app.use(express.static('static'));
 app.get('/data', function (request, response) {
     axios
         .get('http://labs.bible.org/api/?type=json&passage=random&formatting=plain')
