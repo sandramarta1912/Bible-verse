@@ -1,4 +1,8 @@
 class VerseList extends React.Component {
+    // TODO Add state to this component (in order to keep verses)
+    
+    // TODO Add handler to receive new props (a new verse) and then push it into the state
+    
     render() {
        // let displayVerse = function(task) {
        //     React.createElement(

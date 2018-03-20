@@ -16,9 +16,10 @@ class Base extends React.Component {
 
     }
 
-    addItem() {
-
-        console.log("add list");
+    addItem(verse) {
+        console.log("add a verse: " + verse);
+        
+        // TODO pass that verse to the VerseList component thorough it's props
 
     }
 

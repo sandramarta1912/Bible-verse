@@ -12,7 +12,11 @@ class Verse extends React.Component {
             .get('http://localhost:3000/data')
             .then((res) => {
                 console.log("response " + res);
-                const verses = res.data;
+                const verses = res.data;            
+            
+                // TODO send current verse to the Base to be pushed into VerseList
+                // Something like: add(verses)
+
                 console.log(verses);
                 this.setState({ verse: verses });
             })
