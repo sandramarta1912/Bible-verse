@@ -3,19 +3,21 @@ class Base extends React.Component {
         super(props);
         this.state ={
             verse: [],
-            newVerse : ''
+           task : ''
         };
         this.addItem = this.addItem.bind(this);
         this.onButtonPressed = this.onButtonPressed.bind(this)
+
     }
 
     onButtonPressed() {
         console.log("button pressed");
-        this.forceUpdate();
-        console.log("Hey")
+        this.setState({ verse: "marta" });
 
     }
+
     addItem() {
+
         console.log("add list");
 
     }
