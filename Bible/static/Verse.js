@@ -2,24 +2,18 @@ class Verse extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            verse: [],
-            verses: []
+            current: props.current
         };
     }
 
-    retrieveVerse() {
+    retrieve() {
         let self = this;
-        console.log('test');
         axios
             .get('http://localhost:3000/data')
             .then((res) => {
-                console.log("response " + res);
-                const verses = res.data;
-                // TODO send current verse to the Base to be pushed into VerseList
-                // Something like: add(verses)
-
-                console.log(res.data);
-                self.setState({ verse: verses , verses: self.state.verses.concat(verses)});
+                self.setState({current: res.data})
+                self.props.current = res.data
+                self.props.add(res.data)
             })
             .catch(function (error) {
                 console.log("error " +  error);
@@ -27,60 +21,19 @@ class Verse extends React.Component {
             });
     }
 
-
     componentDidMount() {
-        console.log('making an asynchronous call to the backend');
-        this.retrieveVerse();
+        this.retrieve();
     }
 
     componentWillReceiveProps(newProps) {
-        console.log('test1');
-        this.retrieveVerse();
-        console.log('received new props: ' + JSON.stringify(newProps));
-    }
-    shouldComponentUpdate(){
-        console.log('should');
-        this.props.add();
-        return true;
+        this.retrieve();
     }
 
     render() {
-        console.log('this is render verse');
-        let items = this.state.verse.map(function (item, index) {
-            if (item.titles && item.title){
-                return (
-                    React.createElement(
-                        "div",
-                        {key: index},
-                        React.createElement("p", null,
-                            " " + item.bookname ,
-                            " " + item.chapter,
-                            " " + item.text,
-                            " " + item.verse,
-                            " " + item.title,
-                            " " + item.titles
-                        )
-                    )
-                )
-            } else {
-                return (
-                    React.createElement(
-                        "div",
-                        {key: index},
-                        React.createElement("p", null,
-                            " " + item.bookname ,
-                            " " + item.chapter,
-                            " " + item.verse,
-                            " " + item.text,
-                        )
-                    )
-                );
-            }
-        });
-        return( React.createElement("div", {className: 'text-center'}, items));
+        return( React.createElement(
+            "div",
+            {className: 'text-center'},
+            JSON.stringify(this.state.current))
+        );
     }
 }
-
-Verse.propTypes = {
-    add: React.PropTypes.func
-};
