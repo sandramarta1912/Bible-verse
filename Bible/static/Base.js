@@ -12,14 +12,14 @@ class Base extends React.Component {
 
     onButtonPressed() {
         console.log("button pressed");
-        this.forceUpdate();
-        //this.setState({ verse: 'marta' });
+        this.setState(this.state.verse);
 
     }
 
-    addItem(verses) {
+    addItem( verses) {
         console.log("add a verse: " + verses);
-        this.setState({ verse: this.state.verse.concat(verses)});
+
+             //this.setState({ verse: this.state.verse.concat(verses)});
         // TODO pass that verse to the VerseList component thorough it's props
 
     }
